@@ -1,5 +1,6 @@
 require './lib/visitor'
 require './lib/ride'
+require 'pry'
 
 RSpec.describe Visitor do
   before(:each) do
@@ -35,7 +36,7 @@ RSpec.describe Visitor do
     expect(@ride1.total_revenue).to eq(0)
   end
 
-  it 'boards riders, logs rides by visitors, spends visitors money, and lists total revenue' do
+  it 'boards riders, logs rides by visitors, logs riders names, spends visitors money, and lists total revenue' do
     @visitor1.add_preference(:gentle)
     @visitor2.add_preference(:gentle)
 
@@ -45,6 +46,7 @@ RSpec.describe Visitor do
 
     expect(@ride1.rider_log[@visitor1]).to eq(2)
     expect(@ride1.rider_log[@visitor2]).to eq(1)
+    expect(@ride1.rider_names).to eq(["Bruce", "Tucker"])
 
     expect(@visitor1.spending_money).to eq(8) 
     expect(@visitor2.spending_money).to eq(4) 

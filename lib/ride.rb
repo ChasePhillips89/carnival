@@ -14,13 +14,20 @@ class Ride
     if visitor.tall_enough?(@min_height) && 
        visitor.preferences.include?(@excitement) && 
        visitor.spending_money >= @admission_fee
-      
+  
       visitor.spend_money(@admission_fee)
-
-      @rider_log[visitor] ||= 0
-      @rider_log[visitor] += 1
-
+  
+      @rider_log[visitor] = @rider_log[visitor].to_i + 1
+  
       @total_revenue += @admission_fee
     end
+  end
+
+  def rider_names
+    names = []
+    @rider_log.each do |visitor, count|
+      names << visitor.name
+    end
+    names
   end
 end
