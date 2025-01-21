@@ -35,12 +35,12 @@ RSpec.describe Visitor do
   end
 
   it 'returns true if the visitor meets height requirements' do
-    expect(@visitor1.tall_enough?(54)).to be true
-    expect(@visitor3.tall_enough?(54)).to be true
+    expect(@visitor1.tall_enough?(54)).to eq(true)
+    expect(@visitor3.tall_enough?(54)).to eq(true)
   end
 
   it 'returns false if the visitor does not meet height requirements' do
-    expect(@visitor2.tall_enough?(54)).to be false
-    expect(@visitor1.tall_enough?(64)).to be false
+    expect(@visitor2.tall_enough?(54)).to eq(false)
+    expect(@visitor1.tall_enough?(64)).to eq(false)
   end
 end
